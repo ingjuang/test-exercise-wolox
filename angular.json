@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "test-exercise-wolox"
+  "defaultProject": "test-exercise-wolox",
+  "cli": {
+    "analytics": "4cf71f07-1d59-42d9-87ab-299052fc2f63"
+  }
 }
