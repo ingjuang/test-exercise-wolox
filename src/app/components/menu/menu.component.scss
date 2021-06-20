@@ -1,0 +1,40 @@
+.menu{
+    padding: 2em;
+    display: flex;
+    flex-flow: row wrap;
+    font-family: 'Montserrat';
+    justify-content: space-around;
+}
+.logo{
+    flex-grow: 9;
+    width: 10em;
+    justify-content: flex-start;
+}
+
+.link{
+    flex-grow: 1;
+    align-items: right;
+    justify-content: flex-end;
+    padding-left: 1em;
+}
+a{
+    color: #1D263A;
+    text-decoration: none;
+}
+
+a:hover{
+    font-family: 'MontserratSemiBold';
+    color: #000000;
+}
+
+.inicio{
+
+}
+
+.beneficios{
+
+}
+
+.login{
+
+}
