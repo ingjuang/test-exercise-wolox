@@ -1,0 +1,65 @@
+.bienvenida{
+    padding: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    font-size: 3em;
+    .wolox{
+        justify-content: flex-start;
+        flex-grow: 5;
+        color: #97CF00;
+    }
+    .image{
+        justify-content: flex-end;
+        padding-left: 6em;
+        flex-grow: 5;
+        img{
+            width: 11em;
+        }
+    }
+    
+}
+
+.follow-us{
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    font-size: 3em;
+    text-align: center;
+    .background{
+        margin: auto;
+        flex-grow: 5;
+        background-image: url("../../../assets/img_woloxer.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        color: #FFFFFF;
+        .logo-twitter{
+            width: 35px;
+        }
+    }
+    .text{
+        background-color: #F2F5FA;
+        flex-grow: 5;
+    }
+}
+.blue{
+    font-style: 'Montserrat-SemiBold';
+    color: #00A9E5;
+}.green{
+    font-style: 'Montserrat-SemiBold';
+    color: #97CF00;
+}
+
+.beneficios{
+    text-align: center;
+    padding-top: 2em;
+    .intro{
+        font-size: 2em;
+    }
+}
+
+strong{
+    font-family: 'MontserratSemiBold';
+}
