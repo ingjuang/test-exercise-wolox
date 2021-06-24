@@ -23,8 +23,9 @@ export class ButtonComponent implements OnInit {
   openLink(){
     if(this.link){
       window.open(this.link);
-    }else{
-      // this.router.navigate(['/login'])
+    }else if(this.navigate){
+      const url = '/'+this.navigate;
+      this.router.navigate([url])   
     }
   }
 
