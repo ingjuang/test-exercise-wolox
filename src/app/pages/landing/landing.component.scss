@@ -58,6 +58,45 @@
     .intro{
         font-size: 2em;
     }
+    .benefit-row{
+        display: flex;
+        height: auto;
+        flex-flow: row wrap;
+        font-size: 20px;
+        justify-content: baseline;
+        align-items: flex-end;
+        .flex{
+            // display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+        .home{
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+        .workshops{
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+        .snacks{
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+        .remote{
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+        .tecnology{
+            flex-direction: column;
+            flex-wrap: wrap;
+            flex-grow: 1
+        }
+    }
 }
 
 strong{
