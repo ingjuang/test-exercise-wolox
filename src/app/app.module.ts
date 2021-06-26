@@ -7,6 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { LandingModule } from './pages/landing/landing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LandingModule } from './pages/landing/landing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LandingModule
+    LandingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
