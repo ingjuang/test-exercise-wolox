@@ -1,3 +1,20 @@
-<p>login works!</p>
-<a [routerLink]="[ '/register' ]">Registro</a>
-<app-button [type]="'LinkFullBlue'" [text]="'Conocer más'" [navigate]="'list'"></app-button>
+<div class="container">
+    <div class="logo">
+        <img src="../../../assets/logo_full_color.svg" alt="logi">
+    </div>
+    <div class="login">
+        <form action="" method="post" class="form form-login">
+            <div class="form-field">
+                
+                <input id="login-username" type="text" class="form-input" placeholder="Usuario" required>
+            </div>
+            <div class="form-field">
+                <input id="login-password" type="password" class="form-input" placeholder="Contraseña" required>
+            </div>
+        </form>
+
+    </div>
+    <app-button [type]="'LinkBlueText'" [text]="'Entrar'" [navigate]="'list'"></app-button>
+    <br>
+    <a [routerLink]="[ '/register' ]">Registrar</a>
+</div>
