@@ -42,4 +42,7 @@
   border-radius: 100px;
   margin: 10px 5px;
   font-family: 'MontserratSemiBold';
+};
+button:disabled{
+  background-color: #81bdd3;
 }

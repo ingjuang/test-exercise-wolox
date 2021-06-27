@@ -12,6 +12,7 @@ export class ButtonComponent implements OnInit {
   @Input() text: string = "";
   @Input() link: string = "";
   @Input() navigate: string = ""
+  @Input() disabled: boolean = false;
 
   constructor(private router: Router) { }
 

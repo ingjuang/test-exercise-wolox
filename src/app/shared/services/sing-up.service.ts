@@ -22,13 +22,13 @@ export class SingUpService {
 
   SingUp(item:any) {
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `login`;
       this.http
-        .post<any[]>(apiURL, JSON.stringify(item) ,this.httpOptions)
+        .post<any[]>(`${this.apiUrl}signup`, JSON.stringify(item) ,this.httpOptions)
         .toPromise()
         .then((res: any) => {
           // Success
           resolve(res);
+          localStorage.setItem('usuario', JSON.stringify(item));
         },
           err => {
             // Error

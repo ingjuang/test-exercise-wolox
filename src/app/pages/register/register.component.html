@@ -1,58 +1,135 @@
-<div class="container">
-    <form>
-      <ul class="flex-outer">
-        <li>
-          <label for="first-name">First Name</label>
-          <input type="text" id="first-name" placeholder="Enter your first name here">
-        </li>
-        <li>
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" placeholder="Enter your last name here">
-        </li>
-        <li>
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email here">
-        </li>
-        <li>
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" placeholder="Enter your phone here">
-        </li>
-        <li>
-          <label for="message">Message</label>
-          <textarea rows="6" id="message" placeholder="Enter your message here"></textarea>
-        </li>
-        <li>
-          <p>Age</p>
-          <ul class="flex-inner">
-            <li>
-              <input type="checkbox" id="twenty-to-twentynine">
-              <label for="twenty-to-twentynine">20-29</label>
-            </li>
-            <li>
-              <input type="checkbox" id="thirty-to-thirtynine">
-              <label for="thirty-to-thirtynine">30-39</label>
-            </li>
-            <li>
-              <input type="checkbox" id="fourty-to-fourtynine">
-              <label for="fourty-to-fourtynine">40-49</label>
-            </li>
-            <li>
-              <input type="checkbox" id="fifty-to-fiftynine">
-              <label for="fifty-to-fiftynine">50-59</label>
-            </li>
-            <li>
-              <input type="checkbox" id="sixty-to-sixtynine">
-              <label for="sixty-to-sixtynine">60-69</label>
-            </li>
-            <li>
-              <input type="checkbox" id="other">
-              <label for="other">Other</label>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <button type="submit">Submit</button>
-        </li>
-      </ul>
-    </form>
-  </div>
+<div class="register">
+  <form [formGroup]="singUpForm" (ngSubmit)="onSubmit()" class="form form-login">
+    <div class="row">
+      <div class="column">
+        <div class="leftCol">
+          <div class="form-field">
+            <label for="nombres">Nombres(*)</label>
+            <br>
+            <input id="nombres" type="text" formControlName="name" class="form-input" [ngClass]="{'is-invalid':f.name.errors}" required>
+            <br>
+            <div class="alert" *ngIf="f.name.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.name.errors?.maxlength && submit">
+              <br>
+              <p>El nombre no puede superar los 30 caracteres</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="apellidos">Apellidos(*)</label>
+            <br>
+            <input id="apellidos" type="text" class="form-input" formControlName="last_name" [ngClass]="{'is-invalid':f.last_name.errors}"  required>
+            <div class="alert" *ngIf="f.last_name.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.last_name.errors?.maxlength && submit">
+              <br>
+              <p>El apellido no puede superar los 30 caracteres</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="pais">País(*)</label>
+            <br>
+            <select #pais class="form-input" formControlName="country"  [ngClass]="{'is-invalid':f.country.errors}" (change)="loadProvincias(pais.value)">
+              <option [value]="0">--Selecciona--</option>
+              <option *ngFor="let pais of paise$" [value]="pais.nombrePais">{{pais.nombrePais}}</option>
+            </select>
+            <div class="alert" *ngIf="f.country.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+          </div>
+          <div class="form-field" *ngIf="selecPais">
+            <label for="provincia">Provincia(*)</label>
+            <br>
+            <select class="form-input" formControlName="province" [ngClass]="{'is-invalid':f.province.errors}" >
+              <option [value]="">--Selecciona--</option>
+              <option *ngFor="let prov of provincia$" [value]="prov.nombreProvincia">{{prov.nombreProvincia}}</option>
+            </select>
+            <div class="alert" *ngIf="f.province.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="rightCol">
+          <div class="form-field">
+            <label for="email">Correo electrónico(*)</label>
+            <br>
+            <input id="email" type="mail" formControlName="mail" class="form-input" required [ngClass]="{'is-invalid':f.mail.errors}" >
+            <div class="alert" *ngIf="f.mail.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.mail.errors?.email">
+              <br>
+              <p>No cumple con el formato valido</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="telefono">Teléfono(*)</label>
+            <br>
+            <input id="telefono" type="text" formControlName="phone" class="form-input" required [ngClass]="{'is-invalid':f.phone.errors}" >
+            <div class="alert" *ngIf="f.phone.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.phone.errors?.pattern">
+              <br>
+              <p>No cumple con el formato valido</p>
+            </div>
+            <div class="alert" *ngIf="f.phone.errors?.maxLength">
+              <br>
+              <p>Debe tener máximo 10 caracteres</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="password">Contraseña(*)</label>
+            <br>
+            <input id="password" type="password" formControlName="password" class="form-input" required [ngClass]="{'is-invalid':f.password.errors}" >
+            <div class="alert" *ngIf="f.password.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.password.errors?.pattern && submit">
+              <br>
+              <p>El campo debe ser alfanumérico</p>
+            </div>
+            <div class="alert" *ngIf="f.password.errors?.minLength && submit">
+              <br>
+              <p>El campo debe tener mínimo 6 caracteres</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="password2">Confirmar Contraseña(*)</label>
+            <br>
+            <input id="password2" type="password" formControlName="password2" class="form-input" required [ngClass]="{'is-invalid':f.password2.errors}" >
+            <div class="alert" *ngIf="f.password2.errors?.required && submit">
+              <br>
+              <p>El campo es requerido</p>
+            </div>
+            <div class="alert" *ngIf="f.password2.errors?.confirmedValidator">
+              La contraseña no coincide
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="TermAndCondicions">
+          <input type="checkbox" (change)="TermAndCondicions()"><a href="https://www.wolox.com.ar/policies/Privacy_Policy.pdf" target="_blank"> Acepto Términos y Condiciones</a>
+        </div>
+        <br>
+        <br>
+        <app-button [type]="'LinkFullBlue'" [text]="'Registrar'" (mouseenter)="hoverInSubmit()" [disabled]="singUpForm.invalid && !AceptTermsAndCondicions">
+        </app-button>
+      </div>
+    </div>
+  </form>
+</div>
