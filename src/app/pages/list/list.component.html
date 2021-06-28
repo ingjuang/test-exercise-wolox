@@ -1,1 +1,40 @@
-<p>list works!</p>
+<div class="content">
+
+    <aside class="aside">
+        <h2>Que quieres ver?</h2>
+        <ul>
+            <li>
+                <a (click)="orderAZ()">Ordenar de A-Z</a>
+            </li>
+            <li>
+                <a (click)="orderZA()">Ordenar de Z-A</a>
+            </li>
+            <li>
+                <div class="form-field">
+                    <label class="filter">filtro</label>
+                    <br>
+                    <input id="email" [(ngModel)]="filterString" class="form-input">
+                </div>
+            </li>
+            <li>
+                <a href="#">Otros</a>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="projects">
+        <article class="project" *ngFor="let item of list$ | filter : filterString">
+            <div class="image-wrap">
+                <img [src]="item.logo" alt="">
+            </div>
+            <div class="project-info">
+                <a href="#">{{item.tech}}</a>
+                <p>Año: {{item.year}}</p>
+                <p>Autor: {{item.author}}</p>
+                <p>Lisencia: {{item.license}}</p>
+                <p>Lenguaje: {{item.language}}</p>
+                <p>Tipo: {{item.type}}</p>
+            </div>
+        </article>
+    </div>
+</div>
